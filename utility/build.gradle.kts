@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -32,6 +33,22 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                // This connects the 'release' variant created above
+                from(components["release"])
+
+                groupId = "com.github.nikunj22nik"
+                artifactId = "AndroidUtility"
+                version = "1.0.0"
+            }
+        }
     }
 }
 
