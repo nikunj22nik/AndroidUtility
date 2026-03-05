@@ -6,10 +6,8 @@ plugins {
 
 android {
     namespace = "com.example.utility"
-    compileSdk {
-
         compileSdk = 36
-    }
+
 
     defaultConfig {
         minSdk = 24
